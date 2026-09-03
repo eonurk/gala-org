@@ -21,16 +21,16 @@ export const metadata: Metadata = {
   description:
     'Ali Sami Yen Spor Kompleksi RAMS Park’tan 1905’e. Galatasaray’ın evi, bugünü ve yaşayan tarihi.',
   openGraph: {
-    title: 'Burası Galatasaray.',
-    description: 'Aslantepe’den 1905’e uzanan yaşayan Galatasaray deneyimi.',
+    title: '25 kez şampiyon. Beş yıldız. Tek arma.',
+    description: '1905’ten bugüne Galatasaray’ın kulübü, tarihi ve bugünü tek yerde.',
     type: 'website',
     locale: 'tr_TR',
-    images: [{ url: asset('/og.png'), width: 1200, height: 630, alt: 'Burası Galatasaray — 1905’ten Sonsuza' }],
+    images: [{ url: asset('/og.png'), width: 1200, height: 630, alt: 'Galatasaray — 1905’ten Sonsuza' }],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Burası Galatasaray.',
-    description: 'Aslantepe’den 1905’e uzanan yaşayan Galatasaray deneyimi.',
+    title: '25 kez şampiyon. Beş yıldız. Tek arma.',
+    description: '1905’ten bugüne Galatasaray’ın kulübü, tarihi ve bugünü tek yerde.',
     images: [asset('/og.png')],
   },
 };
