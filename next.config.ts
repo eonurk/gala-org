@@ -13,6 +13,10 @@ const basePath = rawBasePath === '/' ? '' : rawBasePath.replace(/\/$/, '');
 const nextConfig: NextConfig = {
   ...(staticExport ? { output: 'export' } : {}),
   ...(basePath ? { basePath, assetPrefix: basePath } : {}),
+  // Plain `<img src="/images/...">` paths are root-absolute and don't get
+  // basePath applied automatically the way next/link and next/image do, so
+  // expose it for the `asset()` helper (lib/asset.ts) to prepend by hand.
+  env: { NEXT_PUBLIC_BASE_PATH: basePath },
 };
 
 export default nextConfig;

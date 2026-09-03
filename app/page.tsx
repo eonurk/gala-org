@@ -4,6 +4,7 @@ import { Footer, Header } from '@/components/site/chrome';
 import { Crest } from '@/components/site/crest';
 import { RevealRoot } from '@/components/site/reveal';
 import { stagger } from '@/lib/stagger';
+import { asset } from '@/lib/asset';
 import {
   artifacts,
   fixtures,
@@ -32,7 +33,7 @@ export default function Home() {
       <section className="hero">
         <div className="hero-bg">
           <img
-            src="/images/rams-park-night.webp"
+            src={asset('/images/rams-park-night.webp')}
             alt="RAMS Park’ta gece maçı: dolu tribünler ve sahayı saran dev bayrak"
             fetchPriority="high"
           />
@@ -189,7 +190,7 @@ export default function Home() {
           <div className="newsgrid">
             <Link className="lead" href={`/haberler/${lead.id}`} data-reveal>
               <div className="ph ph-zoom">
-                <img src={lead.image} alt="" loading="lazy" />
+                <img src={asset(lead.image)} alt="" loading="lazy" />
               </div>
               <div className="lead-meta">
                 <span className="chip">{lead.category}</span>
@@ -205,7 +206,7 @@ export default function Home() {
               {stack.map((item) => (
                 <Link key={item.id} href={`/haberler/${item.id}`}>
                   <div className="ph">
-                    <img src={item.image} alt="" loading="lazy" />
+                    <img src={asset(item.image)} alt="" loading="lazy" />
                   </div>
                   <div className="stack-txt">
                     <p>{item.category}</p>
@@ -244,7 +245,7 @@ export default function Home() {
             {trophies.map((t, i) => (
               <figure className="cup" key={t.name} data-reveal style={stagger(i, 0.09)}>
                 <div className="ph ph-zoom ph-object cup-shot">
-                  <img src={t.image} alt={t.alt} loading="lazy" />
+                  <img src={asset(t.image)} alt={t.alt} loading="lazy" />
                   <span className="cup-branch">{t.branch}</span>
                 </div>
                 <figcaption>
@@ -295,7 +296,7 @@ export default function Home() {
             {artifacts.map((a, i) => (
               <article className="relic" key={a.title} data-reveal style={stagger(i, 0.08)}>
                 <div className="ph ph-zoom ph-object">
-                  <img src={a.image} alt={a.alt} loading="lazy" />
+                  <img src={asset(a.image)} alt={a.alt} loading="lazy" />
                 </div>
                 <p className="relic-meta">{a.meta}</p>
                 <h3 className="h3">{a.title}</h3>
@@ -311,7 +312,7 @@ export default function Home() {
         <div className="wrap">
           <div className="venue-grid">
             <div className="ph ph-zoom" data-reveal>
-              <img src="/images/aslantepe-aerial.webp" alt="RAMS Park’ın havadan görünümü" loading="lazy" />
+              <img src={asset('/images/aslantepe-aerial.webp')} alt="RAMS Park’ın havadan görünümü" loading="lazy" />
             </div>
 
             <div className="venue-copy" data-reveal style={stagger(1)}>
@@ -349,7 +350,7 @@ export default function Home() {
       {/* ---------------------------------------------------------- tribün */}
       <section className="roar">
         <div className="ph">
-          <img src="/images/tribun-ultraslan.webp" alt="Tribünde açılan dev UltrAslan bayrağı" loading="lazy" />
+          <img src={asset('/images/tribun-ultraslan.webp')} alt="Tribünde açılan dev UltrAslan bayrağı" loading="lazy" />
         </div>
         <div className="wrap roar-copy" data-reveal>
           <p className="eyebrow">12. adam</p>
@@ -368,7 +369,7 @@ export default function Home() {
       {/* ------------------------------------------------------------ tarih */}
       <section className="past">
         <div className="ph">
-          <img src="/images/founders.webp" alt="Galatasaray’ın kurucu kuşağı" loading="lazy" />
+          <img src={asset('/images/founders.webp')} alt="Galatasaray’ın kurucu kuşağı" loading="lazy" />
         </div>
 
         <div className="wrap past-copy" data-reveal>
@@ -428,7 +429,7 @@ export default function Home() {
 
           <div className="ph ph-zoom visit-shot" data-reveal style={stagger(1)}>
             <img
-              src="/images/rams-park-bowl.webp"
+              src={asset('/images/rams-park-bowl.webp')}
               alt="RAMS Park’ın boş tribünlerinde koltuklarla yazılmış Galatasaray yazısı"
               loading="lazy"
             />

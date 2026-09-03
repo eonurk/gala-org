@@ -5,6 +5,7 @@ import { Footer, Header, Ticker } from '@/components/site/chrome';
 import { RevealRoot } from '@/components/site/reveal';
 import { stagger } from '@/lib/stagger';
 import { facilities, matchdaySteps, stadiumFacts } from '@/lib/gs';
+import { asset } from '@/lib/asset';
 
 export const metadata: Metadata = {
   title: 'Tesisler',
@@ -23,7 +24,7 @@ export default function Facilities() {
 
       <section className="pagehero">
         <div className="ph">
-          <img src="/images/aslantepe-aerial.webp" alt="RAMS Park’ın havadan görünümü" fetchPriority="high" />
+          <img src={asset('/images/aslantepe-aerial.webp')} alt="RAMS Park’ın havadan görünümü" fetchPriority="high" />
         </div>
         <div className="wrap pagehero-in">
           <p className="crumb">
@@ -48,7 +49,7 @@ export default function Facilities() {
         <div className="wrap">
           <div className="fac-hero">
             <div className="ph ph-zoom" data-reveal>
-              <img src="/images/rams-park-bowl.webp" alt="RAMS Park tribünleri ve saha" loading="lazy" />
+              <img src={asset('/images/rams-park-bowl.webp')} alt="RAMS Park tribünleri ve saha" loading="lazy" />
             </div>
             <div data-reveal style={stagger(1)}>
               <p className="eyebrow">Ana tesis</p>
@@ -151,7 +152,7 @@ export default function Facilities() {
                   <div className="fac-kind">{f.kind}</div>
                   {f.image && (
                     <div className="ph ph-zoom fac-thumb">
-                      <img src={f.image} alt={f.name} loading="lazy" />
+                      <img src={asset(f.image)} alt={f.name} loading="lazy" />
                     </div>
                   )}
                 </div>

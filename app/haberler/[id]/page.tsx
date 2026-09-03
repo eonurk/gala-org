@@ -4,6 +4,7 @@ import { Footer, Header, Ticker } from '@/components/site/chrome';
 import { RevealRoot } from '@/components/site/reveal';
 import { stagger } from '@/lib/stagger';
 import { news } from '@/lib/gs';
+import { asset } from '@/lib/asset';
 
 export function generateStaticParams() {
   return news.map((n) => ({ id: n.id }));
@@ -22,7 +23,7 @@ export default function Article({ params }: { params: { id: string } }) {
 
       <section className="pagehero">
         <div className="ph">
-          <img src={item.image} alt="" fetchPriority="high" />
+          <img src={asset(item.image)} alt="" fetchPriority="high" />
         </div>
         <div className="wrap pagehero-in">
           <p className="crumb">
@@ -82,7 +83,7 @@ export default function Article({ params }: { params: { id: string } }) {
             {more.map((n, i) => (
               <Link className="card" key={n.id} href={`/haberler/${n.id}`} data-reveal style={stagger(i, 0.07)}>
                 <div className="ph ph-zoom">
-                  <img src={n.image} alt="" loading="lazy" />
+                  <img src={asset(n.image)} alt="" loading="lazy" />
                 </div>
                 <div className="card-meta">
                   <em>{n.category}</em>

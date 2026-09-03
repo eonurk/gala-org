@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import { useMemo, useState } from 'react';
 import type { NewsItem } from '@/lib/gs';
+import { asset } from '@/lib/asset';
 
 export function NewsBrowser({ items }: { items: NewsItem[] }) {
   const [filter, setFilter] = useState('Tümü');
@@ -30,7 +31,7 @@ export function NewsBrowser({ items }: { items: NewsItem[] }) {
           {shown.map((item) => (
             <Link className="card" key={item.id} href={`/haberler/${item.id}`}>
               <div className="ph ph-zoom">
-                <img src={item.image} alt="" loading="lazy" />
+                <img src={asset(item.image)} alt="" loading="lazy" />
               </div>
               <div className="card-meta">
                 <em>{item.category}</em>

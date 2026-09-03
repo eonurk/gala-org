@@ -5,6 +5,7 @@ import { Footer, Header, Ticker } from '@/components/site/chrome';
 import { RevealRoot } from '@/components/site/reveal';
 import { stagger } from '@/lib/stagger';
 import { branchGroups, branches } from '@/lib/gs';
+import { asset } from '@/lib/asset';
 
 export const metadata: Metadata = {
   title: 'Branşlar',
@@ -20,7 +21,7 @@ export default function Branches() {
 
       <section className="pagehero">
         <div className="ph">
-          <img src="/images/rams-park-bowl.webp" alt="RAMS Park’ın iç görünümü" fetchPriority="high" />
+          <img src={asset('/images/rams-park-bowl.webp')} alt="RAMS Park’ın iç görünümü" fetchPriority="high" />
         </div>
         <div className="wrap pagehero-in">
           <p className="crumb">
@@ -47,7 +48,7 @@ export default function Branches() {
               <div className="branchgroup" key={group.name} data-reveal style={stagger(gi % 2, 0.08)}>
                 <div className="branchgroup-media">
                   <div className="ph ph-zoom">
-                    <img src={group.image} alt={group.alt} loading="lazy" />
+                    <img src={asset(group.image)} alt={group.alt} loading="lazy" />
                   </div>
                   <h3>
                     {group.name} <em>{String(list.length).padStart(2, '0')} takım</em>
@@ -76,7 +77,7 @@ export default function Branches() {
 
       <section className="roar">
         <div className="ph">
-          <img src="/images/rams-park-koreografi.webp" alt="Şampiyonluk koreografisi" loading="lazy" />
+          <img src={asset('/images/rams-park-koreografi.webp')} alt="Şampiyonluk koreografisi" loading="lazy" />
         </div>
         <div className="wrap roar-copy" data-reveal>
           <p className="eyebrow">Aynı arma</p>

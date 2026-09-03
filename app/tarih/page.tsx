@@ -8,6 +8,7 @@ import { Crest } from '@/components/site/crest';
 import { RevealRoot } from '@/components/site/reveal';
 import { stagger } from '@/lib/stagger';
 import { historyChapters } from '@/lib/gs';
+import { asset } from '@/lib/asset';
 
 type Moment = {
   year: number;
@@ -134,7 +135,7 @@ export default function HistoryPage() {
         {/* ------------------------------------------------------- sahne */}
         <section className="arch-stage">
           <div className="arch-photo">
-            <img key={imageFor(year, display.image)} src={imageFor(year, display.image)} alt="Galatasaray tarih arşivi" />
+            <img key={imageFor(year, display.image)} src={asset(imageFor(year, display.image))} alt="Galatasaray tarih arşivi" />
           </div>
 
           <div className="arch-copy">
@@ -184,7 +185,7 @@ export default function HistoryPage() {
                   aria-label={`${m.year}: ${m.label}`}
                 >
                   <span className="ms-shot" aria-hidden="true">
-                    <img src={imageFor(m.year, m.image)} alt="" loading="lazy" />
+                    <img src={asset(imageFor(m.year, m.image))} alt="" loading="lazy" />
                   </span>
                   <span className="ms-copy">
                     <strong className="num">{m.year}</strong>
@@ -217,7 +218,7 @@ export default function HistoryPage() {
               {crestEras.map((c, i) => (
                 <li key={c.period} data-reveal style={stagger(i, 0.08)}>
                   <div className="crestrail-shot">
-                    {c.node ?? <img src={c.image} alt={c.alt} loading="lazy" />}
+                    {c.node ?? <img src={asset(c.image ?? '')} alt={c.alt} loading="lazy" />}
                   </div>
                   <strong className="num">{c.period}</strong>
                   <span>{c.note}</span>

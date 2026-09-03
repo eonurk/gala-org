@@ -3,6 +3,7 @@ import { Footer, Header, Ticker } from '@/components/site/chrome';
 import { RevealRoot } from '@/components/site/reveal';
 import { NewsBrowser } from './browser';
 import { news } from '@/lib/gs';
+import { asset } from '@/lib/asset';
 
 export const metadata: Metadata = {
   title: 'Haberler',
@@ -18,7 +19,7 @@ export default function NewsIndex() {
 
       <section className="pagehero">
         <div className="ph">
-          <img src="/images/rams-park-koreografi.webp" alt="RAMS Park’ta şampiyonluk koreografisi" fetchPriority="high" />
+          <img src={asset('/images/rams-park-koreografi.webp')} alt="RAMS Park’ta şampiyonluk koreografisi" fetchPriority="high" />
         </div>
         <div className="wrap pagehero-in">
           <p className="eyebrow">Kulübün nabzı</p>

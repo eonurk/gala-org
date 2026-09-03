@@ -5,6 +5,7 @@ import { Footer, Header, Ticker } from '@/components/site/chrome';
 import { RevealRoot } from '@/components/site/reveal';
 import { stagger } from '@/lib/stagger';
 import { clubFacts, historyChapters } from '@/lib/gs';
+import { asset } from '@/lib/asset';
 
 export const metadata: Metadata = {
   title: 'Kulüp',
@@ -39,7 +40,7 @@ export default function Club() {
 
       <section className="pagehero">
         <div className="ph">
-          <img src="/images/rams-park-matchday.webp" alt="Maç günü tribünde atkı sallayan taraftarlar" fetchPriority="high" />
+          <img src={asset('/images/rams-park-matchday.webp')} alt="Maç günü tribünde atkı sallayan taraftarlar" fetchPriority="high" />
         </div>
         <div className="wrap pagehero-in">
           <p className="crumb">
@@ -104,7 +105,7 @@ export default function Club() {
       <section className="roar">
         <div className="ph">
           <img
-            src="/images/kutlama-bruksel.webp"
+            src={asset('/images/kutlama-bruksel.webp')}
             alt="Brüksel Grand-Place’ta belediye binasının balkonunda dalgalanan Galatasaray bayrağı"
             loading="lazy"
           />
