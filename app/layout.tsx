@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import { asset } from '@/lib/asset';
 
 /**
  * Oswald: başlıklar. Türkçe diyakritikleri (İ ı Ş ş Ğ ğ) geniş ve net çizilmiş,
@@ -10,7 +11,9 @@ const FONTS =
   'https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Onest:wght@400;500;600;700;800&family=Fraunces:ital,opsz,wght@1,9..144,300..500&display=swap';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://galatasaray-aslantepe.onurr.chatgpt.site'),
+  // Falls back to the non-GitHub-Pages deploy target when NEXT_PUBLIC_SITE_ORIGIN
+  // isn't set (e.g. local dev, or the Cloudflare Workers build).
+  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_ORIGIN || 'https://galatasaray-aslantepe.onurr.chatgpt.site'),
   title: {
     default: 'Galatasaray · Aslantepe',
     template: '%s · Galatasaray',
@@ -22,13 +25,13 @@ export const metadata: Metadata = {
     description: 'Aslantepe’den 1905’e uzanan yaşayan Galatasaray deneyimi.',
     type: 'website',
     locale: 'tr_TR',
-    images: [{ url: '/og.png', width: 1200, height: 630, alt: 'Burası Galatasaray — 1905’ten Sonsuza' }],
+    images: [{ url: asset('/og.png'), width: 1200, height: 630, alt: 'Burası Galatasaray — 1905’ten Sonsuza' }],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Burası Galatasaray.',
     description: 'Aslantepe’den 1905’e uzanan yaşayan Galatasaray deneyimi.',
-    images: ['/og.png'],
+    images: [asset('/og.png')],
   },
 };
 

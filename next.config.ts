@@ -16,7 +16,12 @@ const nextConfig: NextConfig = {
   // Plain `<img src="/images/...">` paths are root-absolute and don't get
   // basePath applied automatically the way next/link and next/image do, so
   // expose it for the `asset()` helper (lib/asset.ts) to prepend by hand.
-  env: { NEXT_PUBLIC_BASE_PATH: basePath },
+  // NEXT_PUBLIC_SITE_ORIGIN lets metadata (og:image etc.) resolve against
+  // wherever this build actually deploys, instead of a hardcoded domain.
+  env: {
+    NEXT_PUBLIC_BASE_PATH: basePath,
+    NEXT_PUBLIC_SITE_ORIGIN: process.env.PAGES_ORIGIN ?? '',
+  },
 };
 
 export default nextConfig;

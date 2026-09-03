@@ -41,6 +41,7 @@ jobs:
         env:
           STATIC_EXPORT: '1'
           PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+          PAGES_ORIGIN: ${{ steps.pages.outputs.origin }}
         run: pnpm build
 
       # With a basePath, vinext nests the site under dist/client/<repo>/ and

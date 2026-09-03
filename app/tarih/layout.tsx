@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { asset } from '@/lib/asset';
 
 export const metadata: Metadata = {
   title: 'Yaşayan Tarih',
@@ -6,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Galatasaray · Yaşayan Tarih',
     description: 'Yılı seç; o sezonun insanlarını, kupalarını ve izlerini keşfet.',
-    images: [{ url: '/og.png', width: 1200, height: 630 }],
+    images: [{ url: asset('/og.png'), width: 1200, height: 630 }],
   },
 };
 
