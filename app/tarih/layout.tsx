@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'Yaşayan Tarih · Galatasaray',
+  title: 'Yaşayan Tarih',
   description: '1905’ten bugüne, Galatasaray tarihinde yıl yıl yürü.',
   openGraph: {
     title: 'Galatasaray · Yaşayan Tarih',

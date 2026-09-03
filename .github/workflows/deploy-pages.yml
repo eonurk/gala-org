@@ -1,0 +1,88 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let one deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 10
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Configure Pages
+        id: pages
+        uses: actions/configure-pages@v5
+
+      - name: Build static export
+        env:
+          STATIC_EXPORT: '1'
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: pnpm build
+
+      # With a basePath, vinext nests the site under dist/client/<repo>/ and
+      # leaves the home page beside it as <repo>.html. The Pages artifact root
+      # is what gets served at /<repo>/, so that subdirectory is the artifact.
+      - name: Assemble the Pages artifact
+        id: site
+        run: |
+          base='${{ steps.pages.outputs.base_path }}'
+          base="${base#/}"
+          base="${base%/}"
+          if [ -n "$base" ]; then
+            dir="dist/client/$base"
+            mv "dist/client/$base.html" "$dir/index.html"
+            cp dist/client/404.html "$dir/404.html"
+          else
+            dir="dist/client"
+          fi
+          # A route like /haberler is emitted as haberler.html while also having
+          # a haberler/ directory of child routes. Static hosts disagree about
+          # which wins, so give every such directory an index.html too.
+          find "$dir" -name '*.html' -print | while read -r f; do
+            d="${f%.html}"
+            if [ -d "$d" ] && [ ! -e "$d/index.html" ]; then
+              cp "$f" "$d/index.html"
+            fi
+          done
+
+          # `_next/` would be stripped if this artifact were served by Jekyll.
+          touch "$dir/.nojekyll"
+          echo "dir=$dir" >> "$GITHUB_OUTPUT"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: ${{ steps.site.outputs.dir }}
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
