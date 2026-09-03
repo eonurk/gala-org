@@ -33,9 +33,13 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # `enablement` creates the Pages site (source: GitHub Actions) on the
+      # first run, so the repo needs no manual Settings > Pages step.
       - name: Configure Pages
         id: pages
         uses: actions/configure-pages@v5
+        with:
+          enablement: true
 
       - name: Build static export
         env:
