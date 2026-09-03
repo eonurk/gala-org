@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Galatasaray · Yaşayan Tarih',
     description: 'Yılı seç; o sezonun insanlarını, kupalarını ve izlerini keşfet.',
-    images: [{ url: asset('/og.png'), width: 1200, height: 630 }],
+    images: [{ url: asset('/og.jpg'), width: 1200, height: 630 }],
   },
 };
 
